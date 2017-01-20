@@ -47,21 +47,30 @@ function compile_pdf {
 }
 
 function compile_html {
+    rm -r html_build/*
     python compile/html/compile.py
+    cd html_build
+    git add .
+    git commit -m 'update'
+    git push
 }
+type=$1
 
+if [ 'x'$type == 'x' ]; then
+    type='html'
+fi
 
-if [ -z $1 ]; then
+if [ -z $type ]; then
     echo -e "$(tput setaf 3)Specify 'pdf' or 'html'$(tput sgr0)"
     exit
 fi
 
 echo "Compiling..."
 
-if [ $1 == 'pdf' ]; then
+if [ $type == 'pdf' ]; then
     compile_pdf
 
-elif [ $1 == 'html' ]; then
+elif [ $type == 'html' ]; then
     compile_html
 
 else
@@ -70,3 +79,4 @@ else
 fi
 
 echo "Compiled."
+

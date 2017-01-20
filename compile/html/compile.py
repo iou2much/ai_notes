@@ -1,3 +1,9 @@
+# encoding=utf8  
+import sys  
+
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
 """
 Clean up extra latex and markdown stuff, e.g. the keyword arguments to markdown figures.
 """
@@ -43,7 +49,7 @@ HTML_TEMPLATE = '''
 '''
 
 SCRIPTS = '''
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
     <script>
@@ -120,8 +126,8 @@ def process_chapter(chapter, part_slug):
 
 
 if __name__ == '__main__':
-    if os.path.exists(OUT_DIR):
-        shutil.rmtree(OUT_DIR)
+    #if os.path.exists(OUT_DIR):
+    #    shutil.rmtree(OUT_DIR)
 
     # Sort notes into their parts
     parts = defaultdict(list)
@@ -155,6 +161,7 @@ if __name__ == '__main__':
             os.makedirs(os.path.join(OUT_DIR, part_slug))
 
         for chapter in part[1:]:
+            print chapter
             chap_title, chap_path = process_chapter(chapter, part_slug)
             chapter_paths.append((chap_title, chap_path))
 
