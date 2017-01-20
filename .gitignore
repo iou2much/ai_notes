@@ -7,3 +7,4 @@ html_build
 *.swp
 *.pdf
 _scratch
+.idea
