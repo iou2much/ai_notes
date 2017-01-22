@@ -47,7 +47,11 @@ function compile_pdf {
 }
 
 function compile_html {
+    mv html_build/js /tmp/html-js-bak
+    mv html_build/css /tmp/html-css-bak
     rm -r html_build/*
+    mv /tmp/html-js-bak html_build/js
+    mv /tmp/html-css-bak html_build/css 
     python compile/html/compile.py
     cd html_build
     git add .
