@@ -52,6 +52,7 @@ SCRIPTS = '''
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    <script src="http://ai-code.tech/ai_notes_html/js/custom.js"></script>
     <script>
         $(document).ready(function() {
             $('pre').each(function(i, e) {hljs.highlightBlock(e)});
